@@ -1,0 +1,22 @@
+.admin{
+margin-top: 70px;
+margin-bottom: 60px;
+}
+.admin .login_fields{
+    width: 50vw;
+}
+.admin_fooditems{
+    width: 50%;
+    display: flex;
+}
+.email_password select{
+    /* padding: 8px; */
+    border: none;
+    margin: 1rem ;
+    border-bottom: 1px solid #ccc;
+    width: 50vw;
+}
+.file_input{
+    border: none;
+ 
+}

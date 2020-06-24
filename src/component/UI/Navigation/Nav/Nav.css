@@ -1,0 +1,128 @@
+body{
+    padding: 0;
+    margin: 0;
+}
+.navigation{
+    position: fixed;
+    z-index: 100;
+    background-color: white;
+    top:0;
+    width: 100%;
+}
+.navigation ul{
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+.navigation .logo{
+    display: inline-block;
+    width: 70px;
+    height: 70px;
+    cursor: pointer;
+    transition: 0.3s all ease;
+}
+.navigation .logo:hover{
+    transform: scale(1.03);
+    /* width: 75px;
+     height: 75px; */
+}
+.navigation ul li{
+    display: inline;
+    padding: 26px;
+    cursor: pointer;
+}
+.navigation ul li a{
+    text-decoration: none;
+    color: black;
+
+}
+
+.navigation ul li a:hover,.navigation ul a.active{
+    color: #ff5e62;
+
+}
+.search{
+    padding: 6px;
+    border: 1px solid #cccccc;
+    border-radius: 3px;
+}
+
+.bottom-menu{
+    padding: 0;
+    margin: 0;
+    position: fixed;
+    bottom: 0;
+}
+.bottom-navigation{
+    overflow: hidden;
+    background-color: #333;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    text-align : center;
+    padding : 0.4rem 0;
+    z-index: 10;
+}
+.flex-item{
+    display: inline-block;
+    color: #f2f2f2;
+    text-align: center;
+    font-size: 17px;
+    text-align : center;
+    padding: 0 5px;
+
+}
+.mobile{
+    display: none;
+}
+.bottom-navigation{
+    display: none;
+}
+.logout{
+    padding: 0.5rem 1rem;
+    color: white;
+    border: none;
+    /* background: #ff5e62;  */
+   background: rgb(233, 29, 29);
+    border-radius: 3px;
+    cursor: pointer;
+}
+/* .logout:hover{
+    background-color: white;
+    border: 2px solid #ff5e62;
+    color: #ff5e62;
+} */
+/*.link-active:focus{*/
+/*    color: red;*/
+/*}*/
+.active{
+    color: red;
+}
+@media(min-width : 301px) and (max-width : 1025px){
+    .navigation ul li{
+        display: flex;
+        align-items: center;
+        padding: 6px;
+        
+    }
+    .desktop{
+        display: none;
+    }
+    .mobile{
+        display: block;
+    }
+    .bottom-navigation{
+        display: block;
+    }
+    /* .bottom-navigation .activeIcon{
+        background-color: red;
+        color: yellow;
+    } */
+ 
+
+
+}
+

@@ -1,0 +1,92 @@
+.profile{
+    margin-top: 150px;
+    margin-bottom: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* border: 1px solid gray; */
+    width: 30%;
+    flex-direction: column;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 1rem 0;
+    box-shadow: 1px 1px 5px #ccc;
+    
+}
+.profile_pic{
+    position: relative;
+    width: 80px;
+
+}
+.profile_pic img{
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+}
+.profile_pic i{
+    position: absolute;
+    bottom: -12px;
+        left: 35px;
+    right: auto;
+    cursor: pointer;
+    background-color:papayawhip;
+    color: black;
+    padding: 8px;
+    border-radius: 50%;
+}
+.user_detail{
+    padding: 1rem 0;
+}
+.user_detail p{
+    margin: 0.5rem auto;
+}
+.danger_section{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+.change_pass{
+    background-color: #ff5e62;
+    cursor: pointer;
+    border: none;
+    padding: 0.8rem 1rem;
+    color:white;
+    border-radius:2px;
+    margin-bottom: 8px;
+    
+}
+/* .delete_ac{
+    background-color: rgb(214, 63, 63);
+    border: none;
+    padding: 0.5rem 1rem;
+    color:white;
+    border-radius:2px;
+} */
+.danger_section{
+    width: 90%;
+}
+.danger_section > button{
+    font-weight: bold;
+
+}
+.danger_section button:disabled{
+    background-color: #cccccc;
+    cursor:not-allowed !important;
+}
+@media (max-width:900px){
+    .profile{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: center;
+        width: 90%;
+    }
+    .profile_pic,.danger_section{
+        margin: 0.6rem;
+    }
+    
+    .danger_section > button{
+        margin: 4px;
+        font-weight: bold;
+    }
+}
