@@ -1,61 +1,73 @@
 const initState = {
-  authError: null,
-  isSignIn : false
+  loginError: null,
+  signUpError: null,
+  isSignIn: false,
+  loading: false,
 };
 
 const authReducer = (state = initState, action) => {
   switch (action.type) {
-    case "LOGIN_SUCCESS":
-      localStorage.setItem('signIn',true);
-      localStorage.setItem('email',action.email);
+    case 'LOGIN_START':
+    case 'SIGNUP_START':
       return {
         ...state,
-        authError: null,
-        isSignIn: true
+        loading: true,
       };
+
+    case 'LOGIN_SUCCESS':
+      localStorage.setItem('signIn', true);
+      localStorage.setItem('email', action.email);
     case "LOGIN_ERROR":
-      console.log("login error");
-      return {
-        ...state,
-        authError: action.error.message,
-      };
-    case "SIGNUP_SUCCESS":
-      console.log("signup success");
 
       return {
         ...state,
-        authError: "SingUp Success...",
+        loginError: 'Login success',
+        isSignIn: true,
+        loading: false,
       };
-    case "SIGNUP_ERROR":
-      console.log("signup error");
+    case 'LOGIN_ERROR':
+      console.log('login error');
+      return {
+        ...state,
+        loginError: action.error.message,
+        loading: false,
+      };
+    case 'SIGNUP_SUCCESS':
+      console.log('signup success');
 
       return {
         ...state,
-        authError: action.error.message,
+        loading : false,
+        signUpError: 'SingUp Success Please Login...',
       };
-    case "SIGNOUT_SUCCESS":
+    case 'SIGNUP_ERROR':
+      console.log('signup error');
+
+      return {
+        ...state,
+        loading : false,
+        signUpError: action.error.message,
+      };
+    case 'SIGNOUT_SUCCESS':
       localStorage.removeItem('signIn');
       localStorage.removeItem('email');
       return {
         ...state,
-        authError: "SignOut Success...",
+        loginError: null,
+        signUpError: null,
       };
-    case "SIGNOUT_ERROR":
+    case 'SIGNOUT_ERROR':
       return {
         ...state,
-        authError: action.error.message,
       };
-    case "RESET_PASS_SUCCESS":
+    case 'RESET_PASS_SUCCESS':
       return {
         ...state,
-        authError: "Reset Password Success...",
       };
-    case "RESET_PASS_ERROR":
+    case 'RESET_PASS_ERROR':
       return {
         ...state,
-        authError: action.error.message,
       };
-
 
     default:
       return state;

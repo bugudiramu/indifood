@@ -1,12 +1,11 @@
-import React from 'react'
-import loader from "../../images/loader.gif"
+import React from 'react';
 
 function Loader() {
-    return (
-        <div className="loading_gif">
-            <img src={loader} />
-        </div>
-    )
+  return (
+    <div className='loading_gif'>
+      <h1>Loading</h1>
+    </div>
+  );
 }
 
-export default Loader
+export default Loader;

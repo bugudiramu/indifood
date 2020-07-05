@@ -1,15 +1,11 @@
 import React, { Component } from 'react';
 import '../Login/Login.css';
 import Aux from './../../hoc/Auxilary';
-import Nav from './../../component/UI/Navigation/Nav/Nav';
 import img from '../../images/login_img.svg';
-import Footer from '../../component/Footer/Footer';
 import { connect } from 'react-redux';
 import { signUp } from '../../store/actions/authActions';
-import { Redirect } from 'react-router';
-import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import CustomToast from '../../component/Toast/CutomToast';
+import Spinner from "./../../component/UI/Spinner/Spinner";
 
 class SignUp extends Component {
   state = {
@@ -26,19 +22,10 @@ class SignUp extends Component {
   handleSignUp = (e) => {
     e.preventDefault();
     this.props.signUp(this.state);
-    this.notify();
-    this.props.history.replace('/');
   };
-  notify = () =>
-    toast.dark(<CustomToast authError={this.props.authError} />, {
-      position: toast.POSITION.BOTTOM_CENTER,
-      hideProgressBar: true,
-      autoClose: 5000,
-    });
 
   render() {
-    const { authError, auth } = this.props;
-    // if (auth.uid) return <Redirect to="/" />;
+    const { signUpError } = this.props;
     return (
       <Aux>
         <div className='login_page' style={{ marginTop: '60px' }}>
@@ -67,8 +54,10 @@ class SignUp extends Component {
                   name='password'
                   onChange={this.handleChange}
                 />
-                <button onClick={this.handleSignUp}>Sign Up</button>
-                {/* {authError?<h4>{authError}</h4>:null} */}
+                <button onClick={this.handleSignUp}>{this.props.loading ? <Spinner /> : "SIGN UP"}</button>
+                <h5 style={{ color: 'red', marginLeft: '1rem' }}>
+                  {signUpError ? signUpError : null}
+                </h5>
               </div>
             </div>
           </div>
@@ -77,7 +66,6 @@ class SignUp extends Component {
             <img src={img} alt='Hello' />
           </div>
         </div>
-        <Footer />
       </Aux>
     );
   }
@@ -85,8 +73,8 @@ class SignUp extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    auth: state.firebase.auth,
-    authError: state.auth.authError,
+    signUpError: state.auth.signUpError,
+    loading : state.auth.loading
   };
 };
 const mapDispatchToProps = (dispatch) => {

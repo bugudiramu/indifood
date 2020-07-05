@@ -4,18 +4,19 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    /* border: 1px solid gray; */
     width: 30%;
     flex-direction: column;
     margin-left: auto;
     margin-right: auto;
     padding: 1rem 0;
-    box-shadow: 1px 1px 5px #ccc;
+    /* box-shadow: 1px 1px 5px #ccc; */
+    border: 1px solid rgb(230, 230, 230);
+    border-radius: 4px;
+    
     
 }
 .profile_pic{
-    position: relative;
-    width: 80px;
+    width: 100px;
 
 }
 .profile_pic img{
@@ -23,17 +24,7 @@
     width: 100px;
     border-radius: 50%;
 }
-.profile_pic i{
-    position: absolute;
-    bottom: -12px;
-        left: 35px;
-    right: auto;
-    cursor: pointer;
-    background-color:papayawhip;
-    color: black;
-    padding: 8px;
-    border-radius: 50%;
-}
+
 .user_detail{
     padding: 1rem 0;
 }
@@ -67,6 +58,7 @@
 }
 .danger_section > button{
     font-weight: bold;
+    border-radius: 3px;
 
 }
 .danger_section button:disabled{
@@ -80,13 +72,15 @@
         justify-content: space-evenly;
         align-items: center;
         width: 90%;
+       
     }
     .profile_pic,.danger_section{
         margin: 0.6rem;
     }
     
     .danger_section > button{
-        margin: 4px;
+        margin: 6px;
         font-weight: bold;
+    
     }
 }

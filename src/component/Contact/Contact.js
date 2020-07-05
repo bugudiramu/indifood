@@ -8,8 +8,8 @@ import {
 } from '../../store/actions/contactAction';
 import spinner from '../UI/Spinner/Spinner';
 import Loader from '../Loader/Loader';
-import CustomToast from "../../component/Toast/CutomToast"
-import {toast} from "react-toastify"
+import CustomToast from '../../component/Toast/CutomToast';
+import { toast } from 'react-toastify';
 
 class Contact extends Component {
   state = {
@@ -28,39 +28,34 @@ class Contact extends Component {
     const { name, email, message } = this.state;
 
     if (name.length < 3 || email.length < 3 || message.length < 3) {
-      // this.props.hideLoader()
-    this.setState({ disabled: false });
+      this.setState({ disabled: false });
 
-      // return alert('Please provide all the fields...');
-      return   toast.error(<CustomToast authError="Please provide all the fields..." />, {
-        position: toast.POSITION.BOTTOM_CENTER,
-        hideProgressBar: true,
-        autoClose: 5000,
-      });
-
+      return toast.error(
+        <CustomToast authError='Please provide all the fields...' />,
+        {
+          position: toast.POSITION.BOTTOM_CENTER,
+          hideProgressBar: true,
+          autoClose: 3000,
+          closeButton: false,
+        }
+      );
     }
     this.setState({ disabled: !this.state.disabled });
 
-    // this.props.showLoader()
-
-    // this.props.submitContact({
-    //   name,
-    //   email,
-    //   message,
-    // });
-    this.notify()
+    this.notify();
   };
   notify = () =>
-  toast.success(<CustomToast authError="We Have Received Your Info..." />, {
-    position: toast.POSITION.BOTTOM_CENTER,
-    hideProgressBar: true,
-    autoClose: 5000,
-  });
+    toast.success(<CustomToast authError='We Have Received Your Info...' />, {
+      position: toast.POSITION.BOTTOM_CENTER,
+      hideProgressBar: true,
+      autoClose: 3000,
+      closeButton: false,
+    });
 
   render() {
     if (this.props.loading === true) return <Loader />;
     return (
-      <div className='contact'>
+      <div className='contact' id='contact'>
         <div className='contact_card'>
           <h2>Contact Us</h2>
           <div className='contact_input_fields'>
@@ -105,8 +100,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     submitContact: (contactDetails) => dispatch(submitContact(contactDetails)),
-    // showLoader:() => dispatch(showLoader()),
-    // hideLoader:() => dispatch(hideLoader())
+  
   };
 };
 

@@ -30,7 +30,8 @@ class Admin extends Component {
       return   toast.error(<CustomToast authError="Please provide all the fields..." />, {
         position: toast.POSITION.BOTTOM_CENTER,
         hideProgressBar: true,
-        autoClose: 5000,
+        autoClose: 3000,
+        closeButton:false,
       });
     }
     this.props.addItem({
@@ -42,13 +43,13 @@ class Admin extends Component {
       img: this.state.img,
     });
     this.notify()
-    // this.props.history.push("/");
   };
   notify = () =>
   toast.success(<CustomToast authError="Item added successfully..." />, {
     position: toast.POSITION.BOTTOM_CENTER,
     hideProgressBar: true,
-    autoClose: 5000,
+    autoClose: 3000,
+    closeButton: false,
   });
 
 
@@ -139,7 +140,7 @@ class Admin extends Component {
           </div>
         </div>
         <br />
-        {Object.keys(itemList).map((id) => {
+        {/* {Object.keys(itemList).map((id) => {
           return <div style={{display:"flex",justifyContent:"center",flexDirection:"column",alignItems:"center"}}>
             <p>Title : {itemList[id].title}</p>
             <p>Category : {itemList[id].category}</p>
@@ -148,7 +149,7 @@ class Admin extends Component {
 
 
           </div>
-        })}
+        })} */}
       </>
     );
   }
@@ -167,4 +168,3 @@ const mapStateToProps = (state) => {
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Admin);
-// Rice,Roti,Curry,Starter

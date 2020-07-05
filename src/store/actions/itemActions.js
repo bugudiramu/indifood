@@ -1,3 +1,6 @@
+
+import axios from 'axios';
+
 export const addItem = (item) => {
   return (dispatch, getState, { getFirestore }) => {
     // Make async call to database
@@ -127,12 +130,9 @@ export const addItemToCart = (item) => {
     // const firebase = getFirebase();
     const firestore = getFirestore();
     const firebase = getFirebase();
-    console.log(
-      '********************** addItemToCart Firebase kaa Firebase *******************',
-      firebase
-    );
+   
     const userMail = firebase.auth().currentUser.email;
-    console.log('Item To Add', item);
+   
     firestore
       .collection('cart')
       .add({
@@ -182,7 +182,7 @@ export const getCartItems = () => {
     if (localStorage.getItem('email')) {
       var userMail = localStorage.getItem('email');
     }
-    // console.log("*************Fire Store*****************",firebase.auth().currentUser.email);
+    
     firestore
       .collection('cart')
       .get()
@@ -255,17 +255,64 @@ export const getItemDetails = (id) => {
   };
 };
 
-export const emptyCart = () => {
+export const emptyCart = () =>{
+    return{
+        type : "EMPTY_CART"
+    }
+}
+
+export const cleanCart = (ids) =>{
+    return (dispatch, getState, { getFirestore }) =>{
+        const firebase = getFirestore();
+        ids.map(id =>{
+            firebase.collection("cart").doc(id).delete();
+        })
+    }
+}
+export const orders = (order) =>{
+    return {
+        type : "USER_ORDERS",
+        userOrders : order
+    }
+}
+export const getOrders = () =>{
+    return dispatch => {
+
+        if (localStorage.getItem('email')){
+            var userMail =localStorage.getItem('email') ;
+        }
+        axios.get("https://indifood-8870f.firebaseio.com/orders.json")
+        .then(res =>{
+            let userData ={};
+            const data = res.data;
+            const userDataIds = Object.keys(data).filter(id => data[id].email === userMail);
+            userDataIds.map(id =>{
+                userData[id] = data[id];
+            });
+        
+            dispatch(orders(userData))
+        })
+    }
+}
+export const getDetails = (details) =>{
   return {
-    type: 'EMPTY_CART',
-  };
-};
-// Normally we write action as an object like
-// return {
-//     type:"ADD_ITEM",
-//     item:item
-// }
-// With the help of redux-thunk we can write a function and run the async code by halting the dispatch event
-// const db = firebase.firestore();
-// const data = await db.collection('items').get();
-// const doc = data.docs.map(doc => console.log(doc.data()));
+    type : "GET_COMPLETED_ORDER_DETAILS",
+    data : details
+  }
+}
+export const getOrderedDetails = (id) =>{
+  return dispatch => {
+    axios
+    .get(
+      "https://indifood-8870f.firebaseio.com/orders/" +
+        id +
+        ".json"
+    )
+    .then((res) => {
+      dispatch(getDetails(res.data));
+    })
+    .catch((err) => {
+    });
+  }
+}
+

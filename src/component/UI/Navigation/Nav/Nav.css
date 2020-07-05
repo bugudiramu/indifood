@@ -50,6 +50,7 @@ body{
     border-radius: 3px;
 }
 
+
 .bottom-menu{
     padding: 0;
     margin: 0;
@@ -63,7 +64,7 @@ body{
     bottom: 0;
     width: 100%;
     text-align : center;
-    padding : 0.4rem 0;
+    padding : 0.5rem 0;
     z-index: 10;
 }
 .flex-item{
@@ -78,9 +79,24 @@ body{
 .mobile{
     display: none;
 }
+.nav_search{
+    display: flex;
+    height: 70px;
+    margin: auto 1rem;
+    align-items: center;
+    justify-content: flex-end;
+
+}
+.navigation a{
+    text-decoration: none;
+    color: rgb(39, 38, 38);
+
+}
 .bottom-navigation{
     display: none;
 }
+
+
 .logout{
     padding: 0.5rem 1rem;
     color: white;
@@ -90,14 +106,6 @@ body{
     border-radius: 3px;
     cursor: pointer;
 }
-/* .logout:hover{
-    background-color: white;
-    border: 2px solid #ff5e62;
-    color: #ff5e62;
-} */
-/*.link-active:focus{*/
-/*    color: red;*/
-/*}*/
 .active{
     color: red;
 }
@@ -117,11 +125,19 @@ body{
     .bottom-navigation{
         display: block;
     }
-    /* .bottom-navigation .activeIcon{
-        background-color: red;
-        color: yellow;
-    } */
- 
+    .bottom-navigation .flex-item:active{
+ background-color: #333;
+text-decoration: none;
+    }
+    .bottom-navigation .active .flex-item i,
+    .bottom-navigation .active .flex-item .fa_icon,
+    .bottom-navigation .active .flex-item span{
+       color: #ff5e62; 
+    }
+    .bottom-navigation .flex-item span{
+        font-size: 10px;
+    }
+
 
 
 }

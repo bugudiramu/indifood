@@ -2,7 +2,7 @@ import React, {Component} from "react";
 import "./Service.css"
 import Aux from './../../hoc/Auxilary';
 import {connect} from "react-redux"
-import {getVegItems, getNonVegItems} from "../../store/actions/itemActions";
+import { getNonVegItems} from "../../store/actions/itemActions";
 import {Link} from "react-router-dom"
 
 
@@ -20,7 +20,7 @@ class NonVegService extends Component{
             nonVegFoodItems = Object.keys(itemList).map(id =>{
                 return (
                     <Aux>
-                        <Link className="links" to ={"/details/"+id} >
+                        <Link className="links" to ={"/details/"+id} key={id}>
                         <div className="menu_item" id="top">
                             <img src={itemList[id].img} alt="Item Image"/>
                             <div className="style_items">

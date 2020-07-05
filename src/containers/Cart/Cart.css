@@ -8,6 +8,10 @@
     text-align: center;
     margin-top: 100px;
     margin-bottom: 0;
+    font-family: 'Lobster', cursive;
+    color: #FF5E62;
+    font-size: 32px;
+    letter-spacing: 2px;
 }
 .checkout-container{
     margin: 0 auto;
@@ -65,9 +69,11 @@
     display: flex;
 }
 .delete{
-    padding: 6px 10px;
+    padding: 6px 8px;
     color: white;
+    cursor: pointer;
     background-color: #EC4654;
+    border-radius: 3px;
     border: none;
     margin-left: 20px;
 
@@ -98,21 +104,28 @@
     display: block;
 }
 .checkout-button .button{
-    padding: 1rem;
-    border: none;
-    font-weight: bold;
-    background-color: #ff5e62;
-    color: white;
-    cursor: pointer;
-    width: 100%;
     font-size: 18px;
+    color: white;
+    font-weight: bold;
+    border: none;
+    padding: 1rem 0.5rem;
+    /* margin: 1rem; */
+    width: 100%;
+    background: #ff5e62; 
     border-radius: 3px;
-    transition: background 0.3s ease;
+    cursor: pointer;
+    margin-bottom: 1rem;
 }
 .checkout-button .button:hover{
     color: #ff5e62;
     border: 2px solid #ff5e62;
     background: white;
+}
+
+@media (max-width : 900px){
+    .checkout-button .button{
+        margin-bottom: 5rem;
+    }
 }
 @media (min-width : 300px) and (max-width : 499px){
     .checkout-container{
